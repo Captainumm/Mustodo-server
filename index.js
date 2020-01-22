@@ -27,22 +27,18 @@ app.use(
   })
 );
 //세션을 사용하는 형식임
-
 app.use(bodyParser.json());
 //바디파서를 사용하는 형식
-
 app.use(morgan("dev"));
 //모건을 사용하는 형식
-
 app.use(
   cors({
-    origin: ["http://mustodo-first-project.s3-website.us-east-2.amazonaws.com"],
+    origin: ["http://localhost:3000"],
     method: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true
   })
 );
 // 코어스를 사용하는 형식
-
 app.post("/user/login", logInController);
 app.post("/user/signup", signUpController);
 app.get("/user/logout", logOutController);
@@ -55,9 +51,7 @@ app.post("/todo/delete", todoDelete);
 app.put("/user/edit", myPageUserInfoEdit);
 app.post("/calendar", calendarController);
 app.post("/user/getid", todoPagePlusController);
-
 app.listen(port, () => {
   console.log(`server listen on ${port}`);
 });
-
 module.exports = app;
