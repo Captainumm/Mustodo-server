@@ -1,17 +1,18 @@
 {
-	"development": {
-		"username": "root",
-		"password": "",
-		"database": "mustodo",
-		"host": "127.0.0.1",
-		"dialect": "mysql"
-	},
-
-	"production": {
-		"username": "root",
-		"password": null,
-		"database": "database_production",
-		"host": "127.0.0.1",
-		"dialect": "mysql"
-	}
+  "development": {
+    "username": "sangelkim",
+    "password": "ygenerer",
+    "database": "mustodo",
+    "host": "mustodo-first-project.cv9x6p6y6yof.us-east-2.rds.amazonaws.com",
+    "dialect": "mysql",
+    "port": 13302
+  },
+  "production": {
+    "username": "sangelkim",
+    "password": "ygenerer",
+    "database": "mustodo",
+    "host": "mustodo-first-project.cv9x6p6y6yof.us-east-2.rds.amazonaws.com",
+    "dialect": "mysql",
+    "port": 13302
+  }
 }

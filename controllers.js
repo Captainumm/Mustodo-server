@@ -1,5 +1,5 @@
-const { Todo, User } = require('./models');
-const { Op } = require('sequelize');
+const { Todo, User } = require("./models");
+const { Op } = require("sequelize");
 
 module.exports = {
 	logInController: (req, res) => {
