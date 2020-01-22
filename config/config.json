@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "ygenerer",
+    "password": "880802",
     "database": "mustodo",
     "host": "127.0.0.1",
     "dialect": "mysql"
