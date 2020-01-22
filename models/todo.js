@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
       userid: DataTypes.STRING,
       todoid: DataTypes.STRING,
       todoitem: DataTypes.STRING,
-      status: DataTypes.BOOLEAN
+      status: DataTypes.BOOLEAN,
+      time: DataTypes.STRING
     },
     {}
   );

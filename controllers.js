@@ -117,12 +117,13 @@ module.exports = {
     //app.post('/todo/add', todoAdd);
 
     //TODO: todo 추가
-    const { userid, todoid, todoitem, status } = req.body;
+    const { userid, todoid, todoitem, status, time } = req.body;
     Todo.create({
       userid: userid,
       todoid: todoid,
       todoitem: todoitem,
-      status: status
+      status: status,
+      time: time
     })
       .then(el => {
         res.status(200).send("created");
@@ -176,8 +177,11 @@ module.exports = {
     // app.post('/todo/status', todoStatusEdit);
     // 받아온 새로운 값을 업데이트 해주는  todoapi
     const { todoid, status } = req.body;
-
-    Todo.update({ status: status }, { where: { todoid: todoid } })
+    const { userid } = req.session;
+    Todo.update(
+      { status: status },
+      { where: { todoid: todoid, userid: userid } }
+    )
       .then(result => {
         res.status(200).send("info status  update!");
       })
@@ -219,23 +223,13 @@ module.exports = {
   calendarController: (req, res) => {
     //app.post('/calendar', calendarController);
 
-    const session = req.session;
+    const { userid } = req.session;
 
-    const { createdAt } = req.body;
+    const { time } = req.body;
 
     Todo.findAll({
-      attributes: [
-        "userid",
-        "todoid",
-        "todoitem",
-        "status",
-        "createdAt",
-        "updatedAt"
-      ],
-      where: {
-        createdAt: { [Op.startsWith]: createdAt },
-        userid: session.userid
-      }
+      attributes: ["userid", "todoid", "todoitem", "status", "time"],
+      where: { time: { [Op.startsWith]: time }, userid: userid }
     })
       .then(datas => {
         res.json(datas);
