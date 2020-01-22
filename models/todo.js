@@ -4,16 +4,21 @@ module.exports = (sequelize, DataTypes) => {
   const Todo = sequelize.define(
     "Todo",
     {
-      todoid: DataTypes.STRING,
+      userid: DataTypes.NUMBER,
+      todoid: DataTypes.NUMBER,
       todoitem: DataTypes.STRING,
-      status: DataTypes.STRING
+      status: DataTypes.BOOLEAN
     },
     {}
   );
   Todo.associate = function(models) {
     // associations can be defined here
-    Todo.belongsTo(models.User, {
-      foreignKey: "id"
+    models.Todo.belongsTo(models.User, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false,
+        defaultValue: 1
+      }
     });
   };
   return Todo;
